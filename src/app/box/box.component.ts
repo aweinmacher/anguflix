@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MovieService } from '../movie.service';
 import { Movie } from '../movies/movie-model';
 
 @Component({
@@ -10,8 +11,11 @@ import { Movie } from '../movies/movie-model';
 
 export class BoxComponent implements OnInit {
   @Input() movie: Movie;
-  constructor() { }
 
+  constructor(private movieService: MovieService) {}
   ngOnInit() { }
+  addToCart() { 
+    this.movieService.selectMovie(this.movie.id);
+   }
 
 }

@@ -15,8 +15,7 @@ export class CartComponent implements OnInit {
   constructor(private movieService: MovieService) { }
 
   ngOnInit() { 
-    this.movies = this.movieService.getMovies(); 
-    this.movies = this.movies.filter(item => item.selected)
+    this.movies = this.movieService.getSelected(); 
   }
 
 }

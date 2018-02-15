@@ -9,12 +9,15 @@ const MOVIES: Array<Movie> = [
   { id: 4, selected: false, img: "http://www.cgmeetup.net/forums/uploads/gallery/album_1392/med_gallery_646_1392_48130.jpg", title: "Beauty and the Beast", year: 2016, price: 3, descrShort: "Basically the same as the original, except now Hermi-- Emma Wattson plays Belle, fittingly so I would think, given how breath-takingly pretty she is. I mean wow. Rumor has it she'll whip out a wand and turn Gaston into a toad." }
 ];
 
+const SELECTED: Array<Movie> = [];
+
 const BUDGET:number = 10;
 
 @Injectable()
 export class MovieService {
 
   movies: Movie[] = MOVIES;
+  selected: Movie[] = SELECTED;
   budget: number = BUDGET;
 
   constructor() { }
@@ -23,12 +26,28 @@ export class MovieService {
     return this.movies;
   }
 
-  selectMovie(id: number) {
-    this.movies[id].selected = true;
+  getSelected(): Movie[] {
+    return this.selected;
+  }
+
+  _movieExistInSelected(movie:Movie):boolean{
+    let index = this.selected.findIndex(item => item.id === movie.id);
+    return index > -1;
+  }
+
+  selectMovie(id:number) {
+    let index = this.movies.findIndex(item => item.id===id);
+    
+    if (!this._movieExistInSelected(this.movies[index])) {
+        this.selected.push(this.movies[index]);
+        this.movies[index].selected = true;
+    }
+  
   }
 
   removeMovie(id: number) {
-    this.movies[id].selected = false;
+    let index = this.movies.findIndex(item => item.id===id);
+    this.movies[index].selected = false;
   }
 
   getBudget(): number {
