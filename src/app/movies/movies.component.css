@@ -1,0 +1,14 @@
+.all-movies {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie-box {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 15px;
+    height: 40wv;
+    width: 30%;
+    border: 1px solid blueviolet;
+}

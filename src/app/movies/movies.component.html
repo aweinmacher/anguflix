@@ -1,0 +1,11 @@
+<h3>{{title}}</h3>
+<section class="all-movies">
+  
+  <div class=movie-box *ngFor="let movie of movies; let i = index">
+      <img src="{{movie.img}}" width="30%" />
+      <h4>{{movie.title}}, {{movie.year}}</h4>
+      <p>{{movie.descrShort}}</p>
+      <p>price: &#8362;{{movie.price}} </p>
+  </div>
+
+</section>
