@@ -2,6 +2,6 @@
 
 <app-form></app-form>
 
-<section class="all-movies" *ngFor="let movie of movies; let i = index">
-  <app-box [movie]=movie></app-box>
+<section class="all-movies">
+    <app-box class="movie-box" *ngFor="let movie of movies; let i = index" [movie]=movie></app-box>
 </section>

@@ -14,6 +14,9 @@ export class MoviesComponent implements OnInit {
   movies: Movie[];
 
   constructor(private movieService: MovieService) { }
-  ngOnInit() { this.movies = this.movieService.getMovies(); }
+  ngOnInit() { 
+    this.movies = this.movieService.getMovies();
+    this.movies = this.movies.filter(item => !item.selected)
+  }
 
 }

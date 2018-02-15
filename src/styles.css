@@ -8,11 +8,37 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
+.container {
+    margin: auto;
+}
+
 .starter-template {
     padding: 3rem 1.5rem;
     text-align: center;
 }
 
+.all-movies {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid green;
+    margin-bottom: 30px;
+}
+
+.movie-box {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 15px;
+    height: 40wv;
+    width: 30%;
+    border: 1px solid blueviolet;
+}
+
 .row {
-    flex-grow: 1;
+    display: flex;
+}
+
+.smth {
+    display: inline-block;
 }
