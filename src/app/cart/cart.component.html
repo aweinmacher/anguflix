@@ -3,5 +3,8 @@
 <app-form></app-form>
 
 <section class="all-movies">
-    <app-box class="movie-box" *ngFor="let movie of movies; let i = index" [movie]=movie></app-box>
+    <app-box class="movie-box" 
+    *ngFor="let movie of movies; let i = index" 
+    [movie]=movie 
+    (onChangeCartEvent)="removeFromCart($event)"></app-box>
 </section>

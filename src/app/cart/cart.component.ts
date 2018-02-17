@@ -18,4 +18,8 @@ export class CartComponent implements OnInit {
     this.movies = this.movieService.getSelected(); 
   }
 
+  removeFromCart(movie:Movie) {
+    this.movieService.removeMovie(movie.id);
+  }
+
 }

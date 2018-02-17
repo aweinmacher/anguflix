@@ -5,5 +5,4 @@ export class Movie {
     price: number;
     year: number;
     descrShort: string;
-    selected: boolean;
  }

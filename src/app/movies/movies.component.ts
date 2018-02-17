@@ -16,7 +16,10 @@ export class MoviesComponent implements OnInit {
   constructor(private movieService: MovieService) { }
   ngOnInit() { 
     this.movies = this.movieService.getMovies();
-    // this.movies = all.filter(item => !item.selected)
+  }
+
+  addToCart(movie:Movie) {
+    this.movieService.selectMovie(movie.id);
   }
 
 }

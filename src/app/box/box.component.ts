@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MovieService } from '../movie.service';
 import { Movie } from '../movies/movie-model';
 
 @Component({
@@ -11,11 +10,15 @@ import { Movie } from '../movies/movie-model';
 
 export class BoxComponent implements OnInit {
   @Input() movie: Movie;
+  @Output() onChangeCartEvent:EventEmitter<Movie> = new EventEmitter();
 
-  constructor(private movieService: MovieService) {}
+  constructor() {}
   ngOnInit() { }
-  addToCart() { 
-    this.movieService.selectMovie(this.movie.id);
-   }
+  
+  changeCart() {
+    this.onChangeCartEvent.emit(this.movie);
+  }
 
 }
+
+// to pass the function from parent - "leaves" should be dumn
