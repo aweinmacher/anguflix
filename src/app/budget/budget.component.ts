@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-budget',
@@ -8,12 +9,18 @@ import { MovieService } from '../movie.service';
 })
 
 export class BudgetComponent implements OnInit {
-  budget:number;
+  budget: number;
+
+  subscription: Subscription;
 
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
-    this.budget = this.movieService.getBudget();
+    this.budget = this.movieService.budget;
+    this.movieService.budget$.subscribe(updBudget => {
+      this.budget = updBudget;
+      console.log('change!');
+    });
   }
 
 }
