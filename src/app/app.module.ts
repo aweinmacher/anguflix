@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { MovieService } from './movie.service';
 import { DataService } from './data.service';
@@ -15,6 +16,8 @@ import { BudgetComponent } from './budget/budget.component';
 import { FormComponent } from './form/form.component';
 import { BoxComponent } from './box/box.component';
 
+import { FilterPipe } from './filter.pipe'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,11 +27,13 @@ import { BoxComponent } from './box/box.component';
     CartComponent,
     BudgetComponent,
     FormComponent,
-    BoxComponent
+    BoxComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     MovieService,

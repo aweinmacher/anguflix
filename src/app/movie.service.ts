@@ -14,7 +14,7 @@ export class MovieService {
   }
 
   _movieExistInSelected(movie:Movie):boolean {
-    let index = this.user.myMovies.findIndex(item => item.id === movie.id);
+    let index = this.user.myMovies.findIndex(item => item._id === movie._id);
     return index > -1;
   }
   _enoughBudget(movie:Movie):boolean {
@@ -28,8 +28,8 @@ export class MovieService {
     }
   }
   
-  removeMovie(id: number) {
-    let index = this.user.myMovies.findIndex(item => item.id===id);
+  removeMovie(id: string) {
+    let index = this.user.myMovies.findIndex(item => item._id===id);
     this.user.budget += this.user.myMovies[index].price;
     this.user.myMovies.splice(index, 1);
   }

@@ -15,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
 export class MoviesComponent implements OnInit {
   title: string = "All Movies";
   movies: Movie[];
-
+  searchText: string = '';
   constructor(
     private dataService: DataService,
     private movieService: MovieService,
@@ -32,6 +32,14 @@ export class MoviesComponent implements OnInit {
 
   addToCart(movie: Movie) {
     this.movieService.selectMovie(movie);
+  }
+
+  searchMovies(newText) {
+    this.dataService.searchMovies(newText)
+      .subscribe(data => {
+        this.movies = data;
+        console.log(data);
+      });
   }
 
 }

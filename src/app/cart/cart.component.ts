@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 import { MovieService } from '../movie.service';
 import { Movie } from '../movies/movie-model';
+import { User } from '../user-model';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +13,8 @@ import { Movie } from '../movies/movie-model';
 export class CartComponent implements OnInit {
   title:string = "My Collection";
   movies: Movie[];
-
+  searchText: string = '';
+  
   constructor(private movieService: MovieService) { }
 
   ngOnInit() { 
@@ -19,7 +22,11 @@ export class CartComponent implements OnInit {
   }
 
   removeFromCart(movie:Movie) {
-    this.movieService.removeMovie(movie.id);
+    this.movieService.removeMovie(movie._id);
+  }
+
+  updateSearchText(newText) {
+    this.searchText = newText;
   }
 
 }
