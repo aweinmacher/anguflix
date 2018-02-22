@@ -1,10 +1,13 @@
 <h3>{{title}}</h3>
 
-<app-form></app-form>
+<app-form [searchText]='searchText'
+    (onInputChange)="searchMovies($event)"></app-form>
 
 <section class="all-movies">
     <app-box class="movie-box" 
-        *ngFor="let movie of movies; let i = index"
+        *ngFor="let movie of movies | filter: searchText; let i = index"
+        [movie]=movie
+        btnText='Select' 
         (onChangeCartEvent)="addToCart($event)" 
-        [movie]=movie></app-box>
+        ></app-box>
 </section>

@@ -1,7 +1,8 @@
 
-<div (click)="changeCart();">
-  <img src="{{movie.img}}" width="30%" />
+<div class="inner-box" routerLink="/movie">
+  <img src="{{movie.imgUrl}}" width="30%" />
   <h4>{{movie.title}}, {{movie.year}}</h4>
-  <p>{{movie.descrShort}}</p>
+  <p>{{movie.shortDescription}}</p>
   <p>price: &#8362;{{movie.price}} </p>
+  <button class='boxBtn' type="button" [name]="btnText" (click)="changeCart()" >{{btnText}}</button>
 </div>

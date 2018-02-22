@@ -1,3 +1,8 @@
-<p>
-  form works!
-</p>
+<form>
+  <input [(ngModel)]="searchText" 
+    (ngModelChange)="search()" 
+    name="title" 
+    type="text" 
+    placeholder="Search..." 
+    class="form-control">
+</form>

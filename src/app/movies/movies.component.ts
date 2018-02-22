@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 import { MovieService } from '../movie.service';
 import { Movie } from './movie-model';
+import { User } from '../user-model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-movies',
@@ -10,16 +13,33 @@ import { Movie } from './movie-model';
 
 
 export class MoviesComponent implements OnInit {
-  title:string = "All Movies";
+  title: string = "All Movies";
   movies: Movie[];
+  searchText: string = '';
+  constructor(
+    private dataService: DataService,
+    private movieService: MovieService,
+    private http: HttpClient
+  ) { }
 
-  constructor(private movieService: MovieService) { }
-  ngOnInit() { 
-    this.movies = this.movieService.getMovies();
+  ngOnInit() {
+    this.dataService.getMovies()
+      .subscribe(data => {
+        this.movies = data;
+        console.log(data);
+      });
   }
 
-  addToCart(movie:Movie) {
-    this.movieService.selectMovie(movie.id);
+  addToCart(movie: Movie) {
+    this.movieService.selectMovie(movie);
+  }
+
+  searchMovies(newText) {
+    this.dataService.searchMovies(newText)
+      .subscribe(data => {
+        this.movies = data;
+        console.log(data);
+      });
   }
 
 }
