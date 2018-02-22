@@ -10,6 +10,7 @@ import { Movie } from '../movies/movie-model';
 
 export class BoxComponent implements OnInit {
   @Input() movie: Movie;
+  @Input() btnText: string;
   @Output() onChangeCartEvent:EventEmitter<Movie> = new EventEmitter();
 
   constructor() {}
@@ -20,5 +21,3 @@ export class BoxComponent implements OnInit {
   }
 
 }
-
-// to pass the function from parent - "leaves" should be dumn

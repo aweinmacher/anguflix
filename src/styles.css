@@ -37,8 +37,24 @@ body {
 
 .row {
     display: flex;
+    flex: 1;
+    border: 1px solid salmon;
 }
 
 .smth {
     display: inline-block;
+}
+
+img {
+    width: 100%;
+}
+
+.inner-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.boxBtn {
+    margin-top: auto;
+    align-self: center;
 }

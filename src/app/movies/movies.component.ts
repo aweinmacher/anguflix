@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { MovieService } from '../movie.service';
 import { Movie } from './movie-model';
 import { User } from '../user-model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-movies',
@@ -18,10 +19,15 @@ export class MoviesComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private movieService: MovieService,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
-    this.movies = this.dataService.getMovies();
+    this.dataService.getMovies()
+      .subscribe(data => {
+        this.movies = data;
+        console.log(data);
+      });
   }
 
   addToCart(movie: Movie) {

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MovieService } from './movie.service';
 import { DataService } from './data.service';
@@ -26,7 +27,8 @@ import { BoxComponent } from './box/box.component';
     BoxComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [
     MovieService,
