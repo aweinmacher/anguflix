@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MovieService } from './movie.service';
-import { Movie } from './movies/movie-model';
+import { DataService } from './data.service';
+import { Movie } from './movies/movie-model'; // do I need it here?
+import { User } from './user-model'; // do I need it here?
 
 @Component({
   selector: 'app-root',
@@ -9,5 +11,8 @@ import { Movie } from './movies/movie-model';
 })
 export class AppComponent {
   title = 'app';
-  constructor(private movieService: MovieService) { }
+  constructor(
+    private movieService: MovieService, 
+    private dataService: DataService, 
+  ) { }
 }
