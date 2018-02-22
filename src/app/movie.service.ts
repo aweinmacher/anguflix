@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Movie } from './movies/movie-model';
-import { Subscriber } from 'rxjs/Subscriber';
-import { Subject } from 'rxjs/Subject';
+import { User } from './user-model';
 
 const MOVIES: Array<Movie> = [
   { id: 0, img: "http://static.comicvine.com/uploads/original/10/104544/4068923-tarzan-wallpaper-walt-disneys-tarzan-6248938-1024-768.jpg", title: "Tarzan", price: 3, year: 1999, descrShort: "The movie is about the life of Tarzan. Tarzan was a small orphan who was raised by an ape named Kala since he was a child. He believed that this was his family, but on an expedition Jane Porter is rescued by Tarzan." },
@@ -18,9 +17,7 @@ export class MovieService {
 
   movies: Movie[] = MOVIES;
   selected: Movie[] = SELECTED;
-  budget: number = 10;
-
-  budget$: Subject<any> = new Subject();
+  user: User = new User('Anya');
 
   constructor() { }
 
@@ -38,7 +35,7 @@ export class MovieService {
     return index > -1;
   }
   _enoughBudget(movie:Movie):boolean {
-    return this.budget - movie.price >= 0;
+    return this.user.budget - movie.price >= 0;
   }
 
   selectMovie(id:number) {
@@ -47,9 +44,7 @@ export class MovieService {
     
     if (!this._movieExistInSelected(current) && this._enoughBudget(current)) {
         this.selected.push(current);
-        this.budget -= current.price;
-        this.budget$.next(this.budget);
-        console.log(this.budget);
+        this.user.budget -= current.price;
     }
   
   }
@@ -57,10 +52,6 @@ export class MovieService {
   removeMovie(id: number) {
     let index = this.selected.findIndex(item => item.id===id);
     this.selected.splice(index, 1);
-  }
-
-  getBudget(): number {
-    return this.budget;
   }
 
 }
